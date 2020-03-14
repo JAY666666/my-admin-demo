@@ -1,5 +1,10 @@
 @import "~normalize.css/normalize.css";
+@import "./variables.scss";
+@import "./element-ui.scss";
 
+body {
+  overflow: hidden;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,4 +26,3 @@
   }
 }
 
-@import "./element-ui.scss";

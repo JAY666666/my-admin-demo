@@ -1,11 +1,9 @@
 <template>
-  <div class="app-wrapper">
-    <div class="app-left">
-      <sidebar></sidebar>
-    </div>
+  <div class="app-wrapper" :class="{ hiddenSidebar: isHiddenSidebar }">
+    <sidebar class="sidebar" :isCollapse="isHiddenSidebar" />
     <div class="app-right">
-      <navbar class="navbar"></navbar>
-      <app-main class="app-main"></app-main>
+      <navbar class="navbar" @toggleClick="toggleSidebar" />
+      <app-main />
     </div>
   </div>
 </template>
@@ -16,28 +14,52 @@ import { Navbar, Sidebar, AppMain } from "./components";
 export default {
   name: "layout",
   data() {
-    return {};
+    return {
+      isHiddenSidebar: false
+    };
   },
-  components: { Navbar, Sidebar, AppMain }
+  components: { Navbar, Sidebar, AppMain },
+  methods: {
+    toggleSidebar() {
+      this.isHiddenSidebar = !this.isHiddenSidebar;
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
+@import "~@/styles/variables.scss";
 .app-wrapper {
-  display: flex;
+  position: relative;
   height: 100vh;
 }
-.app-left {
-  width: 30%;
-  background-color: aqua;
-  height: 100%;
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  background-color: #304156;
+  width: $sideBarWidth;
+  overflow: hidden;
 }
 .app-right {
-  width: 70%;
-  height: 100%;
+  position: absolute;
+  margin-left: $sideBarWidth;
+  background-color: aqua;
+  width: calc(100% - #{$sideBarWidth});
 }
-.navbar {
-  height: 30px;
-  background-color: blueviolet;
+.nav {
+  height: 50px;
+  width: 100%;
+}
+.hiddenSidebar {
+  .sidebar {
+    width: 70px;
+  }
+  .app-right {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+  }
 }
 </style>
