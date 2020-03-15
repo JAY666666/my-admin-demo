@@ -2,7 +2,11 @@
   <div class="app-wrapper" :class="{ hiddenSidebar: isHiddenSidebar }">
     <sidebar class="sidebar" :isCollapse="isHiddenSidebar" />
     <div class="app-right">
-      <navbar class="navbar" @toggleClick="toggleSidebar" />
+      <navbar
+        class="navbar"
+        @toggleClick="toggleSidebar"
+        :isCollapse="isHiddenSidebar"
+      />
       <app-main />
     </div>
   </div>

@@ -1,11 +1,11 @@
 import Vue from "vue";
 import {
-    Button,
-    Select,
-    Scrollbar,
-    Menu,
-    MenuItemGroup,
-    MenuItem
+  Button,
+  Select,
+  Scrollbar,
+  Menu,
+  MenuItemGroup,
+  MenuItem
 } from "element-ui";
 
 Vue.use(Button);

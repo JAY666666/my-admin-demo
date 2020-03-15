@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <i
-      :class="isCollapse ? 'el-icon-s-fold' : 'el-icon-s-unfold'"
+      :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
       class="toggle"
       @click="toggleClick()"
     ></i>
