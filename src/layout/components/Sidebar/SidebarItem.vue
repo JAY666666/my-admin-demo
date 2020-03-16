@@ -8,26 +8,21 @@
       "
     >
       <el-menu-item :index="resolvePath(onlyOneChild.path)">
-        <i v-if="item.meta" :class="item.meta.icon"></i>
-        <span slot="title">{{ item.meta.title }}</span>
+        <i :class="onlyOneChild.meta.icon || item.meta.icon"></i>
+        <span slot="title">{{ onlyOneChild.meta.title }}</span>
       </el-menu-item>
     </template>
 
-    <el-submenu
-      v-else
-      ref="subMenu"
-      :index="resolvePath(item.path)"
-      popper-append-to-body
-    >
-      <i v-if="item.meta" :class="item.meta.icon"></i>
-      <span slot="title">{{ item.meta.title }}</span>
+    <el-submenu v-else :index="resolvePath(item.path)">
+      <template v-if="item.meta" slot="title">
+        <i :class="item.meta.icon"></i>
+        <span slot="title">{{ item.meta.title }}</span>
+      </template>
       <sidebar-item
         v-for="child in item.children"
         :key="child.path"
-        :is-nest="true"
         :item="child"
         :base-path="resolvePath(child.path)"
-        class="nest-menu"
       />
     </el-submenu>
   </div>
@@ -39,9 +34,7 @@ import { isExternal } from "@/utils/validate";
 
 export default {
   name: "SidebarItem",
-  components: {},
   props: {
-    // route object
     item: {
       type: Object,
       required: true
@@ -52,10 +45,9 @@ export default {
     }
   },
   data() {
-    // To fix https://github.com/PanJiaChen/vue-admin-template/issues/237
-    // TODO: refactor with render function
-    this.onlyOneChild = null;
-    return {};
+    return {
+      onlyOneChild: null
+    };
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
