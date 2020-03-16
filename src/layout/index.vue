@@ -50,12 +50,7 @@ export default {
 .app-right {
   position: absolute;
   margin-left: $sideBarWidth;
-  background-color: aqua;
   width: calc(100% - #{$sideBarWidth});
-}
-.nav {
-  height: 50px;
-  width: 100%;
 }
 .hiddenSidebar {
   .sidebar {

@@ -11,11 +11,12 @@
         :router="true"
         mode="vertical"
       >
-        <el-menu-item-group>
-          <span slot="title">分组一</span>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
+        <sidebar-item
+          v-for="route in routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -23,6 +24,7 @@
 
 <script>
 import variables from "@/styles/variables.scss";
+import SidebarItem from "./SidebarItem";
 
 export default {
   name: "Sidebar",
@@ -35,10 +37,13 @@ export default {
       default: false
     }
   },
-  components: {},
+  components: { SidebarItem },
   computed: {
     variables() {
       return variables;
+    },
+    routes() {
+      return this.$router.options.routes;
     }
   }
 };
