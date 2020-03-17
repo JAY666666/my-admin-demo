@@ -13,7 +13,11 @@
       </el-menu-item>
     </template>
 
-    <el-submenu v-else popper-class="submenu-style" :index="resolvePath(item.path)">
+    <el-submenu
+      v-else
+      popper-class="submenu-style"
+      :index="resolvePath(item.path)"
+    >
       <template v-if="item.meta" slot="title">
         <i :class="item.meta.icon"></i>
         <span slot="title">{{ item.meta.title }}</span>
