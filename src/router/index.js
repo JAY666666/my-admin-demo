@@ -3,25 +3,23 @@ import VueRouter from "vue-router";
 import layout from "@/layout";
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login/index.vue")
+  }, {
     path: "/",
     name: "index",
     component: layout,
-    meta: {
-      icon: "el-icon-goods",
-      title: "首页"
-    },
-    children: [
-      {
-        path: "/home",
-        name: "home",
-        component: () => import("@/views/home.vue"),
-        meta: {
-          title: "首页"
-        }
+    children: [{
+      path: "/home",
+      name: "home",
+      component: () => import("@/views/home.vue"),
+      meta: {
+        icon: "el-icon-goods",
+        title: "首页"
       }
-    ]
+    }]
   },
   {
     path: "/test",
@@ -31,8 +29,7 @@ const routes = [
       title: "实验",
       icon: "el-icon-star-on"
     },
-    children: [
-      {
+    children: [{
         path: "test1",
         name: "test1",
         component: () => import("@/views/test1/index.vue"),
@@ -53,15 +50,13 @@ const routes = [
   {
     path: "/external-link",
     component: layout,
-    children: [
-      {
-        path: "https://panjiachen.github.io/vue-element-admin-site/#/",
-        meta: {
-          title: "外部",
-          icon: "el-icon-goods"
-        }
+    children: [{
+      path: "https://panjiachen.github.io/vue-element-admin-site/#/",
+      meta: {
+        title: "外部",
+        icon: "el-icon-goods"
       }
-    ]
+    }]
   }
 ];
 
