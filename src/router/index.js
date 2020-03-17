@@ -12,7 +12,7 @@ const routes = [{
       title: '首页'
     },
     children: [{
-      path: "home",
+      path: "/home",
       name: "home",
       component: () => import("@/views/home.vue"),
       meta: {
@@ -21,10 +21,9 @@ const routes = [{
     }]
   },
   {
-    path: "test",
+    path: "/test",
     name: "test",
     component: layout,
-    redirect: "test1",
     meta: {
       title: "实验",
       icon: "el-icon-star-on"

@@ -35,17 +35,18 @@ export default {
 @import "~@/styles/variables.scss";
 .app-wrapper {
   position: relative;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  height: 100vh;
-  background-color: #304156;
+  height: 100%;
   width: $sideBarWidth;
   overflow: hidden;
+  background-color: rgb(48, 65, 86);
 }
 .app-right {
   position: absolute;
