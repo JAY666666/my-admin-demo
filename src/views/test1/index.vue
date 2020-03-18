@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "test1",
+  methods:{}
   data() {
     return {};
   },
