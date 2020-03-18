@@ -7,9 +7,14 @@
           !item.alwaysShow
       "
     >
-      <el-menu-item :index="resolvePath(onlyOneChild.path)">
-        <i :class="onlyOneChild.meta.icon || item.meta.icon"></i>
-        <span slot="title">{{ onlyOneChild.meta.title }}</span>
+      <el-menu-item
+        v-if="onlyOneChild.meta"
+        :index="resolvePath(onlyOneChild.path)"
+      >
+        <i v-if="onlyOneChild.meta.icon" :class="onlyOneChild.meta.icon"></i>
+        <span v-if="onlyOneChild.meta.title" slot="title">{{
+          onlyOneChild.meta.title
+        }}</span>
       </el-menu-item>
     </template>
 
@@ -19,8 +24,8 @@
       :index="resolvePath(item.path)"
     >
       <template v-if="item.meta" slot="title">
-        <i :class="item.meta.icon"></i>
-        <span slot="title">{{ item.meta.title }}</span>
+        <i v-if="item.meta.icon" :class="item.meta.icon"></i>
+        <span v-if="item.meta.title" slot="title">{{ item.meta.title }}</span>
       </template>
       <sidebar-item
         v-for="child in item.children"

@@ -9,6 +9,10 @@
   background-color: #1f2d3d !important;
 }
 
+.el-submenu .el-menu-item:hover {
+  background-color: #001528 !important;
+}
+
 .el-menu-item.is-active {
   color: #247bb4 !important;
 }
@@ -17,4 +21,8 @@
 .el-menu--collapse .el-submenu .el-submenu__title span {
   overflow: hidden;
   visibility: hidden;
+}
+
+.el-menu--collapse .el-submenu .el-submenu__title .el-submenu__icon-arrow {
+  display: none;
 }
