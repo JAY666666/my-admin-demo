@@ -11,7 +11,10 @@ import {
   Image,
   Form,
   FormItem,
-  Input
+  Input,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
 } from "element-ui";
 
 Vue.use(Button);
@@ -26,3 +29,6 @@ Vue.use(Image);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem);

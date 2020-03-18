@@ -6,7 +6,14 @@
       @click="toggleClick()"
     ></i>
     <div class="user-info">
-      xxx
+      <el-dropdown trigger="hover">
+        <span class="user-name">jay chou</span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item @click.native.prevent="logout()">
+            logout
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -27,6 +34,9 @@ export default {
   methods: {
     toggleClick() {
       this.$emit("toggleClick");
+    },
+    logout() {
+      this.$router.push("/login");
     }
   }
 };
@@ -47,5 +57,8 @@ export default {
 }
 .user-info {
   margin-right: 15px;
+}
+.user-name {
+  cursor: pointer;
 }
 </style>

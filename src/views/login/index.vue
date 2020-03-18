@@ -6,30 +6,32 @@
         fit="fill"
         :src="require('@/assets/logo-login.png')"
       ></el-image>
-      <el-form
-        :model="loginForm"
-        ref="loginForm"
-        :rules="rules"
-        label-width="80px"
-      >
-        <el-form-item label="账户" prop="username" label-width="50px">
+      <el-form :model="loginForm" ref="loginForm" :rules="rules">
+        <el-form-item prop="username">
           <el-input
             type="test"
             v-model="loginForm.username"
-            placeholder="用户名"
+            placeholder="请输入用户名"
+            prefix-icon="el-icon-user-solid"
+            clearable
             @keyup.enter.native="login"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password" label-width="50px">
+        <el-form-item prop="password">
           <el-input
             type="password"
             v-model="loginForm.password"
-            placeholder="密码"
+            placeholder="请输入密码"
+            prefix-icon="el-icon-lock"
+            show-password
+            clearable
             @keyup.enter.native="login"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="login">登入</el-button>
+          <el-button type="primary" @click="login" class="confirm"
+            >登入</el-button
+          >
         </el-form-item>
       </el-form>
     </div>
@@ -71,19 +73,23 @@ export default {
 
 <style scoped lang="scss">
 .container {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 .content {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  top: 20vh;
+  width: 250px;
+  margin: 0 auto;
+  text-align: center;
 }
 .logo {
-  width: 50px;
-  height: 100px;
-  margin-bottom: 50px;
+  width: 80px;
+  height: 140px;
+  margin-bottom: 20px;
+}
+.confirm {
+  width: 100%;
 }
 </style>
