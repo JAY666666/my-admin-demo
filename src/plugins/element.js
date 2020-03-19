@@ -30,5 +30,5 @@ Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
 Vue.use(Dropdown);
-Vue.use(DropdownMenu)
+Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
