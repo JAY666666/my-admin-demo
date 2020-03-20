@@ -62,7 +62,16 @@ export default {
     login() {
       this.$refs.loginForm.validate(value => {
         if (value) {
-          this.$router.push("/");
+          this.loading = true;
+          this.$store
+            .dispatch("user/login", this.loginForm)
+            .then(() => {
+              this.$router.push("/");
+              this.loading = false;
+            })
+            .finally(() => {
+              this.loading = false;
+            });
         }
       });
     }

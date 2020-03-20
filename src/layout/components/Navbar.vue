@@ -36,7 +36,9 @@ export default {
       this.$emit("toggleClick");
     },
     logout() {
-      this.$router.push("/login");
+      this.$store.dispatch("user/logout").then(() => {
+        this.$router.push("/login");
+      });
     }
   }
 };

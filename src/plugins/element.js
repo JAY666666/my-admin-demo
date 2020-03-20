@@ -14,7 +14,8 @@ import {
   Input,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Message
 } from "element-ui";
 
 Vue.use(Button);
@@ -32,3 +33,4 @@ Vue.use(Input);
 Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
+Vue.use(Message);
