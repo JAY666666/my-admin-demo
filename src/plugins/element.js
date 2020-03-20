@@ -33,4 +33,4 @@ Vue.use(Input);
 Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
-Vue.use(Message);
+Vue.component(Message.name, Message); //解决页面一刷新就弹出空的message

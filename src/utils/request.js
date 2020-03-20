@@ -27,7 +27,7 @@ service.interceptors.response.use(
       return res.data;
     } else if (typeof res.code === "number") {
       Message({
-        message: res.error.message,
+        message: " res.error.message",
         type: "error"
       });
 

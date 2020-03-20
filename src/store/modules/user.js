@@ -8,6 +8,9 @@ const state = {
 const mutations = {
   SET_TOKEN(state, token) {
     state.token = token;
+  },
+  REMOVE_TOKEN(state) {
+    state.token = "";
   }
 };
 
@@ -22,7 +25,7 @@ const actions = {
   },
   logout({ commit }) {
     removeToken();
-    commit("SET_TOKEN", "");
+    commit("REMOVE_TOKEN");
     return Promise.resolve();
   }
 };
