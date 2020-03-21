@@ -22,28 +22,11 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const res = response.data;
-
-    if (res.code === 0) {
-      return res.data;
-    } else if (typeof res.code === "number") {
-      Message({
-        message: " res.error.message",
-        type: "error"
-      });
-
-      if (res.code === 401) {
-        store.dispatch("user/logout");
-        location.reload();
-      }
-
-      return Promise.reject(new Error(res.error.message));
-    } else {
-      return res;
-    }
+    return res;
   },
   error => {
     Message({
-      message: error.message,
+      message: "报错啦",
       type: "error"
     });
 

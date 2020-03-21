@@ -16,11 +16,11 @@ const mutations = {
 
 const actions = {
   login({ commit }, loginInfo) {
-    return login(loginInfo).then(userInfo => {
-      const token = userInfo.token;
+    return login(loginInfo).then(data => {
+      const token = data.data.token;
       commit("SET_TOKEN", token);
       setToken(token);
-      return userInfo;
+      return data;
     });
   },
   logout({ commit }) {
