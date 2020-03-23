@@ -28,7 +28,11 @@ const actions = {
     });
   },
   getInfo({ commit }, token) {
-    return getInfo(token).then(data => {});
+    return getInfo(token).then(userInfo => {
+      const roles = userInfo.roles;
+      commit("SET_ROLES", roles);
+      return userInfo;
+    });
   },
   logout({ commit }) {
     removeToken();

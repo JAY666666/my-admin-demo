@@ -1,3 +1,4 @@
+import { param2Obj } from "@/utils/getQuery";
 const userToken = {
   admin: {
     token: "adminToken"
@@ -8,12 +9,12 @@ const userToken = {
 };
 
 const users = {
-  "admin-token": {
+  adminToken: {
     roles: ["admin"],
     introduction: "I am a super administrator",
     name: "Super Admin"
   },
-  "editor-token": {
+  editorToken: {
     roles: ["editor"],
     introduction: "I am an editor",
     name: "Normal Editor"
@@ -36,7 +37,8 @@ export default {
     };
   },
   getInfo: config => {
-    const { token } = config.query;
+    const { token } = param2Obj(config.url);
+    console.log(token);
     const info = users[token];
     if (!info) {
       return {

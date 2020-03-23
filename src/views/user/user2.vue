@@ -1,12 +1,10 @@
 <template>
-  <div class="container">
-    i am test2
-  </div>
+  <div class="container">editor user can see me</div>
 </template>
 
 <script>
 export default {
-  name: "test2",
+  name: "user2",
   data() {
     return {};
   },

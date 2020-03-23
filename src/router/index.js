@@ -38,7 +38,7 @@ const routes = [
       {
         path: "test1",
         name: "test1",
-        component: () => import("@/views/test1/index.vue"),
+        component: () => import("@/views/common/text1.vue"),
         meta: {
           title: "实验1"
         }
@@ -46,7 +46,7 @@ const routes = [
       {
         path: "test2",
         name: "test2",
-        component: () => import("@/views/test2/index.vue"),
+        component: () => import("@/views/common/text2.vue"),
         meta: {
           title: "实验2"
         }
