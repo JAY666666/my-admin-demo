@@ -7,3 +7,13 @@ export function login(data) {
     data
   });
 }
+
+export function getInfo(token) {
+  return request({
+    url: "/getInfo",
+    method: "get",
+    params: {
+      token
+    }
+  });
+}

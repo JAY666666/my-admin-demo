@@ -1,8 +1,9 @@
-import { login } from "@/api/user";
+import { login, getInfo } from "@/api/user";
 import { setToken, getToken, removeToken } from "@/utils/auth";
 
 const state = {
-  token: getToken()
+  token: getToken(),
+  roles: []
 };
 
 const mutations = {
@@ -11,17 +12,23 @@ const mutations = {
   },
   REMOVE_TOKEN(state) {
     state.token = "";
+  },
+  SET_ROLES(state, roles) {
+    state.roles = roles;
   }
 };
 
 const actions = {
   login({ commit }, loginInfo) {
     return login(loginInfo).then(data => {
-      const token = data.data.token;
+      const token = data.token;
       commit("SET_TOKEN", token);
       setToken(token);
       return data;
     });
+  },
+  getInfo({ commit }, token) {
+    return getInfo(token).then(data => {});
   },
   logout({ commit }) {
     removeToken();

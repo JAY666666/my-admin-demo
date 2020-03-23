@@ -4,7 +4,7 @@ import store from "@/store";
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 5000
+  timeout: 60000
 });
 
 service.interceptors.request.use(
@@ -22,11 +22,22 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const res = response.data;
-    return res;
+
+    if (res.code === 200) {
+      return res.data;
+    } else if (typeof res.code === "number") {
+      Message({
+        message: res.message,
+        type: "error"
+      });
+      return Promise.reject(new Error(res.message));
+    } else {
+      return res;
+    }
   },
   error => {
     Message({
-      message: "报错啦",
+      message: error.message,
       type: "error"
     });
 

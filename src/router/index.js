@@ -76,12 +76,11 @@ router.beforeEach((to, from, next) => {
       //如果前往的路径是白名单内的,就可以直接前往
       next();
     } else {
-      console.log(to.path);
       //如果路径不是白名单内的,而且又没有登录,就跳转登录页面,成功之后，跳转回想去的页面
       next({
         path: "/login",
         query: {
-          redirect: to.path
+          redirect: to.fullPath
         }
       });
     }
