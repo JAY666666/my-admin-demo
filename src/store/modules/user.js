@@ -1,6 +1,6 @@
 import { login, getInfo } from "@/api/user";
 import { setToken, getToken, removeToken } from "@/utils/auth";
-
+import { resetRouter } from "@/router";
 const state = {
   token: getToken(),
   roles: []
@@ -36,6 +36,7 @@ const actions = {
   },
   logout({ commit }) {
     removeToken();
+    resetRouter();
     commit("REMOVE_TOKEN");
     return Promise.resolve();
   }

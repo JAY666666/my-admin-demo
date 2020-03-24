@@ -105,9 +105,6 @@ const creatRouter = () =>
   new VueRouter({
     mode: "history",
     base: process.env.BASE_URL,
-    scrollBehavior: () => ({
-      y: 0
-    }),
     routes: constantRoutes
   });
 
@@ -158,5 +155,10 @@ router.beforeEach((to, from, next) => {
     }
   }
 });
+
+export function resetRouter() {
+  const newRouter = creatRouter();
+  router.matcher = newRouter.matcher; // 动态更新路由时，需要resetRouter
+}
 
 export default router;
