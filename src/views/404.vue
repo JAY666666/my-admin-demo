@@ -1,12 +1,11 @@
 <template>
   <div class="container">
-    i am text1
+    你访问的地址没有鸭！
   </div>
 </template>
 
 <script>
 export default {
-  name: "test1",
   data() {
     return {};
   },

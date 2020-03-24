@@ -12,7 +12,7 @@
         mode="vertical"
       >
         <sidebar-item
-          v-for="route in routes"
+          v-for="route in permission_routes"
           :key="route.path"
           :item="route"
           :base-path="route.path"
@@ -25,7 +25,7 @@
 <script>
 import variables from "@/styles/variables.scss";
 import SidebarItem from "./SidebarItem";
-
+import { mapGetters } from "vuex";
 export default {
   name: "Sidebar",
   data() {
@@ -39,11 +39,9 @@ export default {
   },
   components: { SidebarItem },
   computed: {
+    ...mapGetters(["permission_routes"]),
     variables() {
       return variables;
-    },
-    routes() {
-      return this.$router.options.routes;
     }
   }
 };

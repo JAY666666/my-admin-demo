@@ -2,13 +2,20 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import layout from "@/layout";
 import { getToken } from "@/utils/auth";
+import store from "@/store";
+
 Vue.use(VueRouter);
 
-const routes = [
+export const constantRoutes = [
   {
     path: "/login",
     name: "login",
     component: () => import("@/views/login/index.vue")
+  },
+  {
+    path: "/404",
+    component: () => import("@/views/404"),
+    hidden: true
   },
   {
     path: "/",
@@ -55,11 +62,56 @@ const routes = [
   }
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
-});
+export const asyncRoutes = [
+  {
+    path: "/user",
+    name: "user",
+    component: layout,
+    redirect: "/user/user1",
+    alwaysShow: true,
+    meta: {
+      title: "用户",
+      icon: "el-icon-user"
+    },
+    children: [
+      {
+        path: "/user/user1",
+        name: "user1",
+        component: () => import("@/views/user/user1.vue"),
+        meta: {
+          title: "admin",
+          roles: ["admin"]
+        }
+      },
+      {
+        path: "/user/user2",
+        name: "user2",
+        component: () => import("@/views/user/user2.vue"),
+        meta: {
+          title: "editor",
+          roles: ["editor"]
+        }
+      }
+    ]
+  },
+  {
+    path: "*",
+    redirect: "/404",
+    hidden: true
+  }
+];
+
+const creatRouter = () =>
+  new VueRouter({
+    mode: "history",
+    base: process.env.BASE_URL,
+    scrollBehavior: () => ({
+      y: 0
+    }),
+    routes: constantRoutes
+  });
+
+const router = creatRouter();
 
 const whiteList = ["/login"];
 router.beforeEach((to, from, next) => {
@@ -69,7 +121,27 @@ router.beforeEach((to, from, next) => {
       //if has token and to.path is login => home page
       next("/");
     } else {
-      next();
+      if (store.getters.roles.length === 0) {
+        store
+          .dispatch("user/getInfo")
+          .then(userInfo => {
+            const roles = userInfo.roles;
+            store
+              .dispatch("permission/generateRoutes", roles)
+              .then(accessedRoutes => {
+                router.addRoutes(accessedRoutes);
+                next({
+                  ...to,
+                  replace: true
+                });
+              });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        next();
+      }
     }
   } else {
     if (whiteList.includes(to.path)) {

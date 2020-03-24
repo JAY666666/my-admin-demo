@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    i am text 2
+    i am text2
   </div>
 </template>
 

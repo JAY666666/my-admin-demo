@@ -38,12 +38,11 @@ export default {
   },
   getInfo: config => {
     const { token } = param2Obj(config.url);
-    console.log(token);
     const info = users[token];
     if (!info) {
       return {
         code: 666666,
-        message: "Login failed, unable to get user details."
+        message: "无法获取登录信息"
       };
     }
 

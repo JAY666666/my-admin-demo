@@ -27,8 +27,8 @@ const actions = {
       return data;
     });
   },
-  getInfo({ commit }, token) {
-    return getInfo(token).then(userInfo => {
+  getInfo({ commit, state }) {
+    return getInfo(state.token).then(userInfo => {
       const roles = userInfo.roles;
       commit("SET_ROLES", roles);
       return userInfo;
