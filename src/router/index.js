@@ -115,7 +115,6 @@ router.beforeEach((to, from, next) => {
       next("/");
     } else {
       if (store.getters.roles.length === 0) {
-        debugger
         store
           .dispatch("user/getInfo")
           .then(userInfo => {
