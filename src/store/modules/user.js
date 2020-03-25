@@ -1,17 +1,30 @@
-import { login, getInfo } from "@/api/user";
-import { setToken, getToken, removeToken } from "@/utils/auth";
-import { resetRouter } from "@/router";
-const state = {
-  token: getToken(),
-  roles: []
-};
+import {
+  login,
+  getInfo
+} from "@/api/user";
+import {
+  setToken,
+  getToken,
+  removeToken
+} from "@/utils/auth";
+import {
+  resetRouter
+} from "@/router";
+
+const getDefaultState = () => {
+  return {
+    token: getToken(),
+    roles: []
+  }
+}
+const state = getDefaultState();
 
 const mutations = {
+  RESET_STATE: (state) => {
+    Object.assign(state, getDefaultState())
+  },
   SET_TOKEN(state, token) {
     state.token = token;
-  },
-  REMOVE_TOKEN(state) {
-    state.token = "";
   },
   SET_ROLES(state, roles) {
     state.roles = roles;
@@ -19,25 +32,38 @@ const mutations = {
 };
 
 const actions = {
-  login({ commit }, loginInfo) {
-    return login(loginInfo).then(data => {
-      const token = data.token;
-      commit("SET_TOKEN", token);
-      setToken(token);
-      return data;
-    });
+  login({
+    commit
+  }, loginInfo) {
+    return new Promise((resolve, reject) => {
+      login(loginInfo).then(data => {
+        const token = data.token;
+        commit("SET_TOKEN", token);
+        setToken(token);
+        resolve(data);
+      }).catch(error => reject(error))
+    })
   },
-  getInfo({ commit, state }) {
-    return getInfo(state.token).then(userInfo => {
-      const roles = userInfo.roles;
-      commit("SET_ROLES", roles);
-      return userInfo;
-    });
+  getInfo({
+    commit,
+    state
+  }) {
+    return new Promise((resolve, reject) => {
+      getInfo(state.token).then(userInfo => {
+        const roles = userInfo.roles;
+        commit("SET_ROLES", roles);
+        resolve(userInfo)
+      }).catch(error => {
+        reject(error)
+      })
+    })
   },
-  logout({ commit }) {
+  logout({
+    commit
+  }) {
     removeToken();
+    commit("RESET_STATE");
     resetRouter();
-    commit("REMOVE_TOKEN");
     return Promise.resolve();
   }
 };

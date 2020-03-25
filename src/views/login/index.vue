@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-loading="loading">
     <div class="content">
       <el-image
         class="logo"
@@ -66,7 +66,9 @@ export default {
           this.$store
             .dispatch("user/login", this.loginForm)
             .then(() => {
-              this.$router.push(this.$route.query.redirect || "/");
+              this.$router
+                .push(this.$route.query.redirect || "/")
+                .catch(error => console.log(error));
               this.loading = false;
             })
             .finally(() => {

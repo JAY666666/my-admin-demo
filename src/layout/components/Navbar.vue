@@ -37,12 +37,11 @@ export default {
     },
     logout() {
       this.$store.dispatch("user/logout").then(() => {
-        this.$router.push({
-          path: "/login",
-          query: {
-            redirect: this.$route.fullpath
-          }
-        });
+        this.$router
+          .push({
+            path: "login"
+          })
+          .catch(error => console.log(error));
       });
     }
   }
