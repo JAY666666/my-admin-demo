@@ -1,27 +1,18 @@
-import {
-  login,
-  getInfo
-} from "@/api/user";
-import {
-  setToken,
-  getToken,
-  removeToken
-} from "@/utils/auth";
-import {
-  resetRouter
-} from "@/router";
+import { login, getInfo } from "@/api/user";
+import { setToken, getToken, removeToken } from "@/utils/auth";
+import { resetRouter } from "@/router";
 
 const getDefaultState = () => {
   return {
     token: getToken(),
     roles: []
-  }
-}
+  };
+};
 const state = getDefaultState();
 
 const mutations = {
-  RESET_STATE: (state) => {
-    Object.assign(state, getDefaultState())
+  RESET_STATE: state => {
+    Object.assign(state, getDefaultState());
   },
   SET_TOKEN(state, token) {
     state.token = token;
@@ -32,35 +23,32 @@ const mutations = {
 };
 
 const actions = {
-  login({
-    commit
-  }, loginInfo) {
+  login({ commit }, loginInfo) {
     return new Promise((resolve, reject) => {
-      login(loginInfo).then(data => {
-        const token = data.token;
-        commit("SET_TOKEN", token);
-        setToken(token);
-        resolve(data);
-      }).catch(error => reject(error))
-    })
+      login(loginInfo)
+        .then(data => {
+          const token = data.token;
+          commit("SET_TOKEN", token);
+          setToken(token);
+          resolve(data);
+        })
+        .catch(error => reject(error));
+    });
   },
-  getInfo({
-    commit,
-    state
-  }) {
+  getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(userInfo => {
-        const roles = userInfo.roles;
-        commit("SET_ROLES", roles);
-        resolve(userInfo)
-      }).catch(error => {
-        reject(error)
-      })
-    })
+      getInfo(state.token)
+        .then(userInfo => {
+          const roles = userInfo.roles;
+          commit("SET_ROLES", roles);
+          resolve(userInfo);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
   },
-  logout({
-    commit
-  }) {
+  logout({ commit }) {
     removeToken();
     commit("RESET_STATE");
     resetRouter();

@@ -1,14 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import layout from "@/layout";
-import {
-  getToken
-} from "@/utils/auth";
+import { getToken } from "@/utils/auth";
 import store from "@/store";
 
 Vue.use(VueRouter);
 
-export const constantRoutes = [{
+export const constantRoutes = [
+  {
     path: "/login",
     name: "login",
     component: () => import("@/views/login/index.vue")
@@ -22,15 +21,17 @@ export const constantRoutes = [{
     path: "/",
     name: "index",
     component: layout,
-    children: [{
-      path: "/home",
-      name: "home",
-      component: () => import("@/views/home.vue"),
-      meta: {
-        icon: "el-icon-goods",
-        title: "首页"
+    children: [
+      {
+        path: "/home",
+        name: "home",
+        component: () => import("@/views/home.vue"),
+        meta: {
+          icon: "el-icon-goods",
+          title: "首页"
+        }
       }
-    }]
+    ]
   },
   {
     path: "/test",
@@ -40,7 +41,8 @@ export const constantRoutes = [{
       title: "实验",
       icon: "el-icon-star-on"
     },
-    children: [{
+    children: [
+      {
         path: "test1",
         name: "test1",
         component: () => import("@/views/common/text1.vue"),
@@ -60,7 +62,8 @@ export const constantRoutes = [{
   }
 ];
 
-export const asyncRoutes = [{
+export const asyncRoutes = [
+  {
     path: "/user",
     name: "user",
     component: layout,
@@ -70,7 +73,8 @@ export const asyncRoutes = [{
       title: "用户",
       icon: "el-icon-user"
     },
-    children: [{
+    children: [
+      {
         path: "/user/user1",
         name: "user1",
         component: () => import("@/views/user/user1.vue"),

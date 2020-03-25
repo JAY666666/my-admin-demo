@@ -1,7 +1,4 @@
-import {
-  asyncRoutes,
-  constantRoutes
-} from "@/router/index";
+import { asyncRoutes, constantRoutes } from "@/router/index";
 
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
@@ -41,18 +38,16 @@ const mutations = {
 };
 
 const actions = {
-  generateRoutes({
-    commit
-  }, roles) {
+  generateRoutes({ commit }, roles) {
     return new Promise(resolve => {
       let accessedRoutes;
-      console.log(asyncRoutes[0].children)
+      console.log(asyncRoutes[0].children);
       if (roles.includes("admin")) {
         accessedRoutes = asyncRoutes || []; //当roles包括admin时，可访问所以路由
-        console.log(asyncRoutes[0].children)
+        console.log(asyncRoutes[0].children);
       } else {
         accessedRoutes = filterSyncRoutes(asyncRoutes, roles); //没有admin时，筛选出其可访问的路由表
-        console.log(asyncRoutes[0].children)
+        console.log(asyncRoutes[0].children);
       }
       commit("SET_ROUTES", accessedRoutes);
       resolve(accessedRoutes);

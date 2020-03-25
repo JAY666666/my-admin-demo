@@ -38,9 +38,7 @@ export default {
     logout() {
       this.$store.dispatch("user/logout").then(() => {
         this.$router
-          .push({
-            path: "login"
-          })
+          .push(`/login?redirect=${this.$route.fullPath}`)
           .catch(error => console.log(error));
       });
     }
