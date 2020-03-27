@@ -1,5 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+//重写路由push方法
+const routerPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error => error);
+};
 import layout from "@/layout";
 import { getToken } from "@/utils/auth";
 import store from "@/store";
@@ -20,10 +25,11 @@ export const constantRoutes = [
   {
     path: "/",
     name: "index",
+    redirect: "/home",
     component: layout,
     children: [
       {
-        path: "/home",
+        path: "home",
         name: "home",
         component: () => import("@/views/home.vue"),
         meta: {
@@ -37,6 +43,7 @@ export const constantRoutes = [
     path: "/test",
     name: "test",
     component: layout,
+    redirect: "/test/test1",
     meta: {
       title: "实验",
       icon: "el-icon-star-on"
@@ -79,7 +86,7 @@ export const asyncRoutes = [
         name: "user1",
         component: () => import("@/views/user/user1.vue"),
         meta: {
-          title: "admin",
+          title: "管理员",
           roles: ["admin"]
         }
       },
@@ -88,7 +95,7 @@ export const asyncRoutes = [
         name: "user2",
         component: () => import("@/views/user/user2.vue"),
         meta: {
-          title: "editor",
+          title: "编辑",
           roles: ["editor"]
         }
       }

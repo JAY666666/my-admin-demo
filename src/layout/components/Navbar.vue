@@ -5,6 +5,7 @@
       class="toggle"
       @click="toggleClick()"
     ></i>
+    <breadcrumb class="breadcrumb-container" />
     <div class="user-info">
       <el-dropdown trigger="hover">
         <span class="user-name">jay chou</span>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import Breadcrumb from "@/component/Breadcrumb";
 export default {
   name: "Navbar",
   props: {
@@ -30,16 +32,14 @@ export default {
   data() {
     return {};
   },
-  components: {},
+  components: { Breadcrumb },
   methods: {
     toggleClick() {
       this.$emit("toggleClick");
     },
     logout() {
       this.$store.dispatch("user/logout").then(() => {
-        this.$router
-          .push(`/login?redirect=${this.$route.fullPath}`)
-          .catch(error => console.log(error));
+        this.$router.push(`/login?redirect=${this.$route.fullPath}`);
       });
     }
   }
@@ -48,21 +48,36 @@ export default {
 
 <style scoped lang="scss">
 .navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  overflow: hidden;
+  position: relative;
   height: 50px;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-}
-.toggle {
-  font-size: 18px;
-  margin-left: 10px;
-}
-.user-info {
-  margin-right: 15px;
-}
-.user-name {
-  cursor: pointer;
+  .toggle {
+    line-height: 50px;
+    margin-left: 10px;
+    font-size: 18px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
+    }
+  }
+  .breadcrumb-container {
+    float: left;
+    margin-left: 10px;
+  }
+  .user-info {
+    float: right;
+    margin-right: 20px;
+    height: 100%;
+    line-height: 50px;
+    .user-name {
+      cursor: pointer;
+    }
+  }
 }
 </style>

@@ -15,7 +15,9 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownItem,
-  Message
+  Message,
+  Breadcrumb,
+  BreadcrumbItem
 } from "element-ui";
 
 Vue.use(Button);
@@ -34,3 +36,5 @@ Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.component(Message.name, Message); //解决页面一刷新就弹出空的message
+Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
