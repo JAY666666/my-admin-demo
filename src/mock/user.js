@@ -21,34 +21,42 @@ const users = {
   }
 };
 
-export default {
-  login: config => {
-    const { username } = JSON.parse(config.body);
-    const token = userToken[username];
-    if (!token) {
+export default [
+  {
+    url: "/login",
+    type: "post",
+    response: config => {
+      const { username } = JSON.parse(config.body);
+      const token = userToken[username];
+      if (!token) {
+        return {
+          code: 666666,
+          message: "密码或账户名错误！"
+        };
+      }
       return {
-        code: 666666,
-        message: "密码或账户名错误！"
+        data: token,
+        code: 200
       };
     }
-    return {
-      data: token,
-      code: 200
-    };
   },
-  getInfo: config => {
-    const { token } = param2Obj(config.url);
-    const info = users[token];
-    if (!info) {
+  {
+    url: "/getInfo",
+    type: "get",
+    response: config => {
+      const { token } = param2Obj(config.url);
+      const info = users[token];
+      if (!info) {
+        return {
+          code: 666666,
+          message: "无法获取登录信息"
+        };
+      }
+
       return {
-        code: 666666,
-        message: "无法获取登录信息"
+        code: 200,
+        data: info
       };
     }
-
-    return {
-      code: 200,
-      data: info
-    };
   }
-};
+];

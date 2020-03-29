@@ -32,7 +32,9 @@ const actions = {
           setToken(token);
           resolve(data);
         })
-        .catch(error => reject(error));
+        .catch(error => {
+          reject(error);
+        });
     });
   },
   getInfo({ commit, state }) {
