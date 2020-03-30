@@ -1,5 +1,16 @@
 <template>
   <div class="sidebar">
+    <div class="logo">
+      <router-link to="/" class="logo-container">
+        <el-image
+          :src="
+            require('@/assets/' + (isCollapse ? 'logo-login.png' : 'logo.png'))
+          "
+          class="logo-image"
+          fit="contain"
+        ></el-image>
+      </router-link>
+    </div>
     <el-scrollbar>
       <el-menu
         :collapse="isCollapse"
@@ -47,4 +58,15 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.logo {
+  height: 50px;
+  .logo-container {
+    width: 100%;
+    .logo-image {
+      padding: 0 20px;
+      height: 100%;
+    }
+  }
+}
+</style>

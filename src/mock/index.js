@@ -7,11 +7,7 @@ Mock.setup({
 });
 
 const responseFake = (url, type, response) => {
-  return Mock.mock(
-    new RegExp(url), //string url => regexp url 文档上string也可以，但跑起来有bug
-    type,
-    response
-  );
+  return Mock.mock(new RegExp(url), type, response);
 };
 
 mocks.map(route => {
