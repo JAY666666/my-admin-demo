@@ -1,5 +1,7 @@
 <template>
-  <div class="container">editor user can see me</div>
+  <div class="container">
+    <el-button v-permission="['editor', 'admin']">editor user</el-button>
+  </div>
 </template>
 
 <script>
