@@ -8,7 +8,7 @@
     <breadcrumb class="breadcrumb-container" />
     <div class="user-info">
       <el-dropdown trigger="hover">
-        <span class="user-name">jay chou</span>
+        <span class="user-name">{{ name }}</span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native.prevent="logout()">
             logout
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Breadcrumb from "@/component/Breadcrumb";
 export default {
   name: "Navbar",
@@ -42,6 +43,9 @@ export default {
         this.$router.push(`/login?redirect=${this.$route.fullPath}`);
       });
     }
+  },
+  computed: {
+    ...mapGetters(["name"])
   }
 };
 </script>
