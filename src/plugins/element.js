@@ -17,7 +17,10 @@ import {
   DropdownItem,
   Message,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  DatePicker,
+  Table,
+  TableColumn
 } from "element-ui";
 
 Vue.use(Button);
@@ -38,3 +41,6 @@ Vue.use(DropdownItem);
 Vue.component(Message.name, Message); //解决页面一刷新就弹出空的message
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
+Vue.use(DatePicker);
+Vue.use(Table);
+Vue.use(TableColumn);

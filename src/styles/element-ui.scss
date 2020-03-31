@@ -1,20 +1,10 @@
 @import "~element-ui/lib/theme-chalk/index.css";
 
 .el-menu {
+  padding-top: 10px;
   border: none;
   overflow: hidden;
-}
-
-.el-submenu .el-menu-item {
-  background-color: #1f2d3d !important;
-}
-
-.el-submenu .el-menu-item:hover {
-  background-color: #001528 !important;
-}
-
-.el-menu-item.is-active {
-  color: #247bb4 !important;
+  height: 100%;
 }
 
 //when sidebar is collapse, set title hidden

@@ -44,9 +44,9 @@ export default {
   left: 0;
   bottom: 0;
   height: 100%;
+  border-right: 1px solid whitesmoke;
   width: $sideBarWidth;
   overflow: hidden;
-  background-color: rgb(48, 65, 86);
 }
 .app-right {
   position: absolute;

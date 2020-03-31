@@ -1,7 +1,8 @@
 import Mock from "mockjs";
 import user from "./user";
+import order from "./order";
 
-const mocks = [...user];
+const mocks = [...user, ...order];
 Mock.setup({
   timeout: 500
 });

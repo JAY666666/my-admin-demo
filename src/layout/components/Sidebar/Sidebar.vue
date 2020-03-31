@@ -16,9 +16,6 @@
         :collapse="isCollapse"
         :unique-opened="false"
         :collapse-transition="false"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
-        :active-text-color="variables.menuActiveText"
         :router="true"
         mode="vertical"
       >
@@ -34,7 +31,6 @@
 </template>
 
 <script>
-import variables from "@/styles/variables.scss";
 import SidebarItem from "./SidebarItem";
 import { mapGetters } from "vuex";
 export default {
@@ -50,10 +46,7 @@ export default {
   },
   components: { SidebarItem },
   computed: {
-    ...mapGetters(["permission_routes"]),
-    variables() {
-      return variables;
-    }
+    ...mapGetters(["permission_routes"])
   }
 };
 </script>
@@ -64,7 +57,7 @@ export default {
   .logo-container {
     width: 100%;
     .logo-image {
-      padding: 0 20px;
+      padding: 0 30px;
       height: 100%;
     }
   }
