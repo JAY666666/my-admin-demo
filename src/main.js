@@ -5,7 +5,6 @@ import store from "./store";
 import "./plugins/element";
 import "./directives";
 import "./styles/index.scss";
-import "./mock";
 
 Vue.config.productionTip = false;
 

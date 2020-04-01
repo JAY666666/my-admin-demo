@@ -38,6 +38,7 @@ export default {
   name: "test1",
   data() {
     return {
+      
       value1: "",
       value2: "",
       tableData: [],
