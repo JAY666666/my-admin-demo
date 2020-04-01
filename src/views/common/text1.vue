@@ -49,7 +49,9 @@ export default {
   },
   computed: {
     tables() {
-      return this.tableData.filter(table => table.userID.includes(this.value1));
+      return this.tableData.filter(table => {
+        return table.userID.includes(this.value1);
+      });
     }
   },
   methods: {

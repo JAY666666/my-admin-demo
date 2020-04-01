@@ -14,9 +14,9 @@ const actions = {
   getOrder({ commit }) {
     return new Promise((resolve, reject) => {
       getOrders()
-        .then(orders => {
-          commit("SET_ORDERS", orders);
-          resolve(orders);
+        .then(data => {
+          commit("SET_ORDERS", data);
+          resolve(data);
         })
         .catch(error => reject(error));
     });
