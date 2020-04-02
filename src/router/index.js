@@ -141,7 +141,7 @@ router.beforeEach((to, from, next) => {
               });
           })
           .catch(error => {
-            console.log(error);
+            reject(error);
           });
       } else {
         next();
