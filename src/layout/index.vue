@@ -32,7 +32,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~@/styles/variables.scss";
 .app-wrapper {
   position: relative;
   height: 100%;

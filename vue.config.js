@@ -5,5 +5,12 @@ module.exports = {
     } else {
       config.entry.app.push("./src/mock");
     }
+  },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/styles/variables.scss";`
+      }
+    }
   }
 };
