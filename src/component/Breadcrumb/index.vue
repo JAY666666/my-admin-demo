@@ -1,14 +1,18 @@
 <template>
   <div class="breadcrumb-container">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">
-        <span
-          v-if="item.redirect === 'noRedirect' || index == breadList.length - 1"
-          class="no-redirect"
-          >{{ item.meta.title }}</span
-        >
-        <a v-else @click.prevent="handleClick(item)">{{ item.meta.title }}</a>
-      </el-breadcrumb-item>
+      <transition-group name="breadcrumb">
+        <el-breadcrumb-item v-for="(item, index) in breadList" :key="index + 0">
+          <span
+            v-if="
+              item.redirect === 'noRedirect' || index == breadList.length - 1
+            "
+            class="no-redirect"
+            >{{ item.meta.title }}</span
+          >
+          <a v-else @click.prevent="handleClick(item)">{{ item.meta.title }}</a>
+        </el-breadcrumb-item>
+      </transition-group>
     </el-breadcrumb>
   </div>
 </template>
