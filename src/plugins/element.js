@@ -20,7 +20,8 @@ import {
   BreadcrumbItem,
   DatePicker,
   Table,
-  TableColumn
+  TableColumn,
+  Checkbox
 } from "element-ui";
 
 Vue.use(Button);
@@ -44,3 +45,4 @@ Vue.use(BreadcrumbItem);
 Vue.use(DatePicker);
 Vue.use(Table);
 Vue.use(TableColumn);
+Vue.use(Checkbox);
