@@ -75,9 +75,9 @@ export default {
       this.$refs.loginForm.validate(value => {
         if (value) {
           if (this.remember) {
-            Cookies.set("rememberFlag", true);
-            Cookies.set("userName", this.loginForm.username);
-            Cookies.set("userPass", this.loginForm.password);
+            Cookies.set("rememberFlag", true, { expires: 7 });
+            Cookies.set("userName", this.loginForm.username, { expires: 7 });
+            Cookies.set("userPass", this.loginForm.password, { expires: 7 });
           } else {
             Cookies.set("rememberFlag", false);
             Cookies.set("userName", "");

@@ -35,8 +35,9 @@
     "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
     "sass": "^1.25.0",
-    "webpack": "^4.42.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-particles": "^1.0.9",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.0"
   },
   "browserslist": [
     "> 1%",
