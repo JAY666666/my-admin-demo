@@ -52,7 +52,7 @@ export const constantRoutes = [
       {
         path: "test1",
         name: "test1",
-        component: () => import("@/views/common/text1.vue"),
+        component: () => import("@/views/common/test1.vue"),
         meta: {
           title: "实验1"
         }
@@ -60,9 +60,17 @@ export const constantRoutes = [
       {
         path: "test2",
         name: "test2",
-        component: () => import("@/views/common/text2.vue"),
+        component: () => import("@/views/common/test2.vue"),
         meta: {
           title: "实验2"
+        }
+      },
+      {
+        path: "test3",
+        name: "test3",
+        component: () => import("@/views/common/test3.vue"),
+        meta: {
+          title: "实验3"
         }
       }
     ]
