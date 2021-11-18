@@ -16,6 +16,7 @@
       placeholder="函数去抖动"
       @change="bounce2()"
     ></el-input>
+    <el-button @click="handleDeepClone">xxx</el-button>
   </div>
 </template>
 
@@ -25,7 +26,15 @@ export default {
   data() {
     return {
       value1: "",
-      value2: ""
+      value2: "",
+      obj: {
+        name: "wxl",
+        money: null,
+        like: [1, 2, 3],
+        sex: undefined,
+        likes: { sport: "basketball" },
+        children: this.obj
+      }
     };
   },
   methods: {
@@ -40,6 +49,10 @@ export default {
     //假的ajax请求
     ajax(value) {
       console.log("抖动", value);
+    },
+    handleDeepClone() {
+      let obj2 = _.cloneDeep(this.obj);
+      console.log(obj2, "深拷贝");
     }
   }
 };
