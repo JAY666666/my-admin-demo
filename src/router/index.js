@@ -74,6 +74,26 @@ export const constantRoutes = [
         }
       }
     ]
+  },
+  {
+    path: "/layload",
+    name: "layload",
+    component: layout,
+    redirect: "/layload/index",
+    meta: {
+      title: "懒加载",
+      icon: "el-icon-star-on"
+    },
+    children: [
+      {
+        path: "index",
+        name: "index",
+        component: () => import("@/views/layload/index.vue"),
+        meta: {
+          title: "懒加载实例"
+        }
+      }
+    ]
   }
 ];
 

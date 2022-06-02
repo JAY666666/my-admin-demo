@@ -8,8 +8,6 @@ import "./styles/index.scss";
 
 Vue.config.productionTip = false;
 
-console.log(Vue);
-
 new Vue({
   router,
   store,
