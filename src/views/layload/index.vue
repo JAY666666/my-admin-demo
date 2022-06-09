@@ -18,15 +18,15 @@ export default {
           index: 0
         },
         {
-          src: require("../../assets/微信图片_20210322115927.jpg"),
+          src: require("../../assets/微信图片_20210323135149.jpg"),
           index: 1
         },
         {
-          src: require("../../assets/微信图片_20210322115927.jpg"),
+          src: require("../../assets/微信图片_20210323135153.jpg"),
           index: 2
         },
         {
-          src: require("../../assets/微信图片_20210322115927.jpg"),
+          src: require("../../assets/微信图片_20210323135157.jpg"),
           index: 3
         },
         {

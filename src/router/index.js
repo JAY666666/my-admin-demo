@@ -15,11 +15,13 @@ export const constantRoutes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/views/login/index.vue")
+    component: () =>
+      import(/* webpackChunkName: "Login" */ "@/views/login/index.vue")
   },
   {
     path: "/404",
-    component: () => import("@/views/404"),
+    name: "404",
+    component: () => import(/* webpackChunkName: "404" */ "@/views/404"),
     hidden: true
   },
   {
@@ -31,7 +33,8 @@ export const constantRoutes = [
       {
         path: "home",
         name: "home",
-        component: () => import("@/views/home.vue"),
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/home.vue"),
         meta: {
           icon: "el-icon-goods",
           title: "首页"
@@ -52,7 +55,8 @@ export const constantRoutes = [
       {
         path: "test1",
         name: "test1",
-        component: () => import("@/views/common/test1.vue"),
+        component: () =>
+          import(/* webpackChunkName: "test1" */ "@/views/common/test1.vue"),
         meta: {
           title: "实验1"
         }
@@ -60,7 +64,8 @@ export const constantRoutes = [
       {
         path: "test2",
         name: "test2",
-        component: () => import("@/views/common/test2.vue"),
+        component: () =>
+          import(/* webpackChunkName: "test2" */ "@/views/common/test2.vue"),
         meta: {
           title: "实验2"
         }
@@ -68,7 +73,8 @@ export const constantRoutes = [
       {
         path: "test3",
         name: "test3",
-        component: () => import("@/views/common/test3.vue"),
+        component: () =>
+          import(/* webpackChunkName: "test3" */ "@/views/common/test3.vue"),
         meta: {
           title: "实验3"
         }
@@ -88,7 +94,10 @@ export const constantRoutes = [
       {
         path: "index",
         name: "index",
-        component: () => import("@/views/layload/index.vue"),
+        component: () =>
+          import(
+            /* webpackChunkName: "lazyload" */ "@/views/layload/index.vue"
+          ),
         meta: {
           title: "懒加载实例"
         }
@@ -112,7 +121,8 @@ export const asyncRoutes = [
       {
         path: "/user/user1",
         name: "user1",
-        component: () => import("@/views/user/user1.vue"),
+        component: () =>
+          import(/* webpackChunkName: "user1" */ "@/views/user/user1.vue"),
         meta: {
           title: "管理员",
           roles: ["admin"]
@@ -121,7 +131,8 @@ export const asyncRoutes = [
       {
         path: "/user/user2",
         name: "user2",
-        component: () => import("@/views/user/user2.vue"),
+        component: () =>
+          import(/* webpackChunkName: "user2" */ "@/views/user/user2.vue"),
         meta: {
           title: "编辑",
           roles: ["editor"]

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import _ from "loadsh";
+import { debounce, cloneDeep } from "loadsh";
 export default {
   data() {
     return {
@@ -43,16 +43,13 @@ export default {
       this.ajax(this.value1);
     },
     //调用去抖动函数
-    bounce2: _.debounce(function() {
+    bounce2: debounce(function() {
       this.ajax(this.value2);
     }, 3000),
     //假的ajax请求
-    ajax(value) {
-      console.log("抖动", value);
-    },
+    ajax(value) {},
     handleDeepClone() {
-      let obj2 = _.cloneDeep(this.obj);
-      console.log(obj2, "深拷贝");
+      let obj2 = cloneDeep(this.obj);
     }
   }
 };

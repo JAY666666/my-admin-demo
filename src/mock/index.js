@@ -3,7 +3,6 @@ import user from "./user";
 import order from "./order";
 
 const mocks = [...user, ...order];
-
 const responseFake = (url, type, response) => {
   return Mock.mock(new RegExp(url), type, response);
 };
