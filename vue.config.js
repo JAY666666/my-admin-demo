@@ -1,4 +1,4 @@
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 //  自定义设置
 // const customOptions = {
@@ -24,21 +24,21 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   configureWebpack: config => {
-    console.log(config, "233");
+    // console.log(config, "233");
     if (process.env.NODE_ENV === "production") {
       //为生产环境修改配置...
-      config.optimization.splitChunks = {
-        chunks: "all",
-        maxInitialRequests: Infinity,
-        minSize: 20000
-      };
+      // config.optimization.splitChunks = {
+      //   chunks: "all",
+      //   maxInitialRequests: Infinity,
+      //   minSize: 20000
+      // };
     } else {
       config.entry.app.push("./src/mock");
     }
   },
-  configureWebpack: {
-    plugins: [new BundleAnalyzerPlugin()]
-  },
+  // configureWebpack: {
+  //   plugins: [new BundleAnalyzerPlugin()]
+  // },
   css: {
     loaderOptions: {
       scss: {
