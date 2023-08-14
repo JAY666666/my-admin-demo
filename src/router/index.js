@@ -78,6 +78,15 @@ export const constantRoutes = [
         meta: {
           title: "实验3"
         }
+      },
+      {
+        path: "test4",
+        name: "test4",
+        component: () =>
+          import(/* webpackChunkName: "test3" */ "@/views/common/test4.vue"),
+        meta: {
+          title: "实验4"
+        }
       }
     ]
   },
